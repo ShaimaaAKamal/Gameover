@@ -1,7 +1,8 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 export default function sort() {
   return (
-    <div>sort</div>
+    <Outlet/>
   )
 }
