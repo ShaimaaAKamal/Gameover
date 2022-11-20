@@ -3,28 +3,36 @@
 $navColor:#272B31;
 $navTextColor:#9A9B9D;
 $subNavBg:#11CAF0;
+$sitebg:#272B31;
 
-nav{
-    background-color: $navColor;
-    span{
-        font-family:'Xanh Mono', monospace;
-    }
-    .nav-link{
-        color:$navTextColor;
-        &:hover{
-            color:rgba(255, 255, 255, 0.8);
+body{
+    background-color:#272B31 !important;
+
+    nav{
+        background-color: $navColor;
+        span{
+            font-family:'Xanh Mono', monospace;
+        }
+        .nav-link{
+            color:$navTextColor;
+            &:hover{
+                color:rgba(255, 255, 255, 0.8);
+            }
+        }
+        .navbar-nav .nav-link.active{
+            color:#fff;
+        }
+        .dropdown-item.active{
+          background-color:$subNavBg ;
+        }
+        .loginlink{
+            color:$navTextColor;
+            &:hover{
+                color:rgba(255, 255, 255, 0.8);
+            }
         }
     }
-    .navbar-nav .nav-link.active{
-        color:#fff;
-    }
-    .dropdown-item.active{
-      background-color:$subNavBg ;
-    }
-    .loginlink{
-        color:$navTextColor;
-        &:hover{
-            color:rgba(255, 255, 255, 0.8);
-        }
-    }
+    
+
 }
+
