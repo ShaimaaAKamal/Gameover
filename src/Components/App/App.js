@@ -11,10 +11,11 @@ import PlatForm from "../PlatForms/PlatForm";
 import Loading from '../Loading/Loading';
 import Sort from '../Sort/Sort';
 import Category from '../Categories/Category'
-
+import RedirectLogin from "../RedirectLogin/RedirectLogin";
 function App() {
   const routes=createBrowserRouter([
     {path:'',element:<Layout/>,errorElement:<NotFound/>,children:[
+      {index:true,element:<RedirectLogin/>},
       {path:'home',element:<Home/>},
       {path:'login',element:<Login/>},
       {path:'register',element:<Register/>},
