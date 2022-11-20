@@ -76,7 +76,7 @@ export default function Register() {
                   <a href="https://policies.google.com/privacy" className='text-reset'>Privacy Policy</a> and <a className='text-reset' href="https://policies.google.com/terms">Terms of Service</a> apply.
                 </p>
                 <p className='small text-secondary text-center pt-4  borderTop d-flex align-items-center justify-content-center'>
-                    <span>Already a member?</span> <Link to='/login' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Log In</span><i className="fa-sm ms-1 fa-solname pt-1 fa-chevron-right"></i></Link>
+                    <span>Already a member?</span> <Link to='/login' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Log In</span><i className="fa-sm ms-1 fa-solid pt-1 fa-chevron-right"></i></Link>
                 </p>
              </div>
           </div>
