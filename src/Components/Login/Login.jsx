@@ -19,17 +19,17 @@ export default function Login() {
             <h5 className='text-center mt-3 mb-2'>Log in to GameOver</h5>
             <form className='row pt-3 login'>
                 <div className="col-12">
-                    <div class="mb-3">
-                      <input type="email" class="form-control" id="email" placeholder="Email Address"/>
+                    <div className="mb-3">
+                      <input type="email" className="form-control" id="email" placeholder="Email Address"/>
                     </div>
                 </div>
                 <div className="col-12">
-                    <div class="mb-3">
-                      <input type="password" class="form-control" id="password" placeholder="Password"/>
+                    <div className="mb-3">
+                      <input type="password" className="form-control" id="password" placeholder="Password"/>
                     </div>
                 </div>
                 <div className="col-12">
-                    <div class="mb-3">
+                    <div className="mb-3">
                       <button className='w-100 btn py-2'>Login</button>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ export default function Login() {
                 <Link to='forgetPassword' className='text-info  text-decoration-none'>Forgot Password?</Link>
                </div>
                <div  className='d-flex justify-content-center align-items-center'>              
-                  <span>Not a member yet?</span> <Link to='register' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Create Account</span><i className="fa-sm fa-solid pt-1 fa-chevron-right"></i></Link>
+                  <span>Not a member yet?</span> <Link to='/register' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Create Account</span><i className="fa-sm fa-solid pt-1 fa-chevron-right"></i></Link>
                </div>
             </div>
          </div>
