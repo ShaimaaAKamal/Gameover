@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import auth from '../../images/auth.jpg'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import Validation from '../../js/Validation'
+const validate=new Validation();
 export default function Register() {
+  const navigate=useNavigate()
   const [user,setUser]=useState({
       'first-name':'',
       'last-name':'',
@@ -15,6 +17,18 @@ export default function Register() {
       myuser[e.target.name]=e.target.value;
       setUser(myuser)
   }
+
+  const FormSubmit=(e)=>{
+     e.preventDefault();
+     const validationResult=validate.validateRegisterForm(user)
+     if(validationResult.error){
+
+     }
+     else{
+         navigate('/login')
+     }
+  }
+
   return (
     <div className="container py-5 my-5">
         <div className="row g-0">
@@ -26,7 +40,7 @@ export default function Register() {
           <div className="col-lg-6">
              <div className='form  p-4'>
                 <h5 className='text-center mt-3 mb-4'>Create My Account!</h5>
-                <form className='row'>
+                <form className='row' onSubmit={FormSubmit}>
                     <div className="col-6">
                         <div className="mb-3">
                           <input type="text" className="form-control" name="first-name" placeholder="First Name" onChange={getUserData}/>
