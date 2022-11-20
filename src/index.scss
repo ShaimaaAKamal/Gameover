@@ -46,10 +46,16 @@ body{
             border:none;
             padding:.5rem .9rem;
         }
+        .login .form-control{
+            background-color: #fff;
+        }
         button{
             background-color: #393F43;
             color:#fff;
             border:.5px solid #1C1E22;
+            &:hover{
+                background-color: #393F43;
+            }
         }
     }
     
