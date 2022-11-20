@@ -48,7 +48,7 @@ export default function Navbar() {
                     <ul className="dropdown-menu">
                       <li><NavLink className="dropdown-item" to="games/Categories/racing">Racing</NavLink></li>
                       <li><NavLink className="dropdown-item" to="games/Categories/sports">Sports</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/socail">Social</NavLink></li>
+                      <li><NavLink className="dropdown-item" to="games/Categories/social">Social</NavLink></li>
                       <li><NavLink className="dropdown-item" to="games/Categories/shooter">Shooter</NavLink></li>
                       <li><NavLink className="dropdown-item" to="games/Categories/open-world">Open-World</NavLink></li>
                       <li><NavLink className="dropdown-item" to="games/Categories/zombie">Zombie</NavLink></li>
