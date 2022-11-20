@@ -32,10 +32,25 @@ function App() {
                {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
               'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
             );
-          },}
+          }}
         ]},
         {path:'sort-by',element:<Sort/>,children:[
-          {path:':sortItem',element:<DisplayedGames/>},
+          {index:true,element:<DisplayedGames/>,  
+          loader: async ({ params }) => {
+            return axios.get(
+              `https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=`,
+               {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
+            );
+          }},
+          {path:':sortItem',element:<DisplayedGames/>,
+           loader: async ({ params }) => {
+            return axios.get(
+              `https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=${params.sortItem}`,
+               {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
+            );
+          }}
         ]},
         {path:'Categories',element:<Category/>,children:[
           {index:true,element:<Loading/>},
