@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import auth from '../../images/auth.jpg'
 import { Link } from 'react-router-dom'
 
 export default function Register() {
+  const [user,setUser]=useState({
+      ' first-name':'',
+      'last-name':'',
+      'age':0,
+      'email':'',
+      'password':''
+  })
+  const getUserData=(e)=>{
+      const myuser={...user};
+      myuser[e.target.name]=e.target.value;
+      setUser(myuser)
+      console.log(user);
+  }
   return (
     <div className="container py-5 my-5">
         <div className="row g-0">
