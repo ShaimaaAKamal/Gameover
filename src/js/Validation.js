@@ -35,5 +35,21 @@ export default class Validation{
         })
        return schema.validate(user , {abortEarly:false})
      }
+
+     validateLoginForm(credentials){
+          const schema=Joi.object({
+                email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','org'] } }).messages({
+                  'string.empty': `Email is required`,
+                  'string.email': `Email must be valid`,
+                  'any.required': `Email is a required`
+                }),
+                password: Joi.string().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/).messages({
+                  'string.empty': `Password is required`,
+                  'string.pattern.base': `Password must be have at least one capital letter and one letter`,
+                  'any.required': `Password is a required`
+                }),
+           })
+          return schema.validate(credentials , {abortEarly:false})
+     }
 }
 
