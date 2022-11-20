@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider , Navigate } from "react-router-dom";
+import axios from "axios";
 import Layout from '../Layout/Layout';
 import NotFound from '../NotFound/NotFound';
 import Login from '../Login/Login'
@@ -12,6 +13,7 @@ import Loading from '../Loading/Loading';
 import Sort from '../Sort/Sort';
 import Category from '../Categories/Category'
 import RedirectLogin from "../RedirectLogin/RedirectLogin";
+
 function App() {
   const routes=createBrowserRouter([
     {path:'',element:<Layout/>,errorElement:<NotFound/>,children:[
@@ -23,14 +25,17 @@ function App() {
         {path:'all',element:<All/>},
         {path:'Platforms',element:<PlatForm/>,children:[
           {index:true,element:<Loading/>},
-          {path:'pc',element:<DisplayedGames/>},
-          {path:'browser',element:<DisplayedGames/>}
+          {path:':platform' ,element:<DisplayedGames/>,
+          loader: async ({ params }) => {
+            return axios.get(
+              `https://free-to-play-games-database.p.rapidapi.com/api/games?platform=${params.platform}`,
+               {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
+            );
+          },}
         ]},
         {path:'sort-by',element:<Sort/>,children:[
-          {path:'release-date',element:<DisplayedGames/>},
-          {path:'popularity',element:<DisplayedGames/>},
-          {path:'relevance',element:<DisplayedGames/>},
-          {path:'alphabetical',element:<DisplayedGames/>}
+          {path:':sortItem',element:<DisplayedGames/>},
         ]},
         {path:'Categories',element:<Category/>,children:[
           {index:true,element:<Loading/>},
