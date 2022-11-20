@@ -22,12 +22,20 @@ export default function Register() {
      e.preventDefault();
      const validationResult=validate.validateRegisterForm(user)
      if(validationResult.error){
-
+         setValidationErrorsList(validationResult.error.details);
      }
      else{
+         //send data to api
          navigate('/login')
      }
   }
+
+  const getMessage=(validationErrorsList,key)=>{
+    const  ErrorElement=validationErrorsList.find(error => error.context.label === key);
+    let message=(ErrorElement)?ErrorElement.message:'';
+    return message;
+  }
+  
 
   return (
     <div className="container py-5 my-5">
@@ -43,27 +51,33 @@ export default function Register() {
                 <form className='row' onSubmit={FormSubmit}>
                     <div className="col-6">
                         <div className="mb-3">
-                          <input type="text" className="form-control" name="first-name" placeholder="First Name" onChange={getUserData}/>
+                          <input type="text" className="form-control mb-1" name="first-name" placeholder="First Name" onChange={getUserData}/>
+                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'first-name')}</div>                        
                         </div>
                     </div>
                     <div className="col-6">
                         <div className="mb-3">
-                          <input type="text" className="form-control" name="last-name" placeholder="Last Name" onChange={getUserData}/>
+                          <input type="text" className="form-control mb-1" name="last-name" placeholder="Last Name" onChange={getUserData}/>     
+                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'last-name')}</div>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <input type="email" className="form-control" name="email" placeholder="Email Address" onChange={getUserData}/>
+                          <input type="email" className="form-control mb-1" name="email" placeholder="Email Address" onChange={getUserData}/>
+                          <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'email')}</div>
+
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <input type="number" className="form-control" name="age" placeholder="Age" onChange={getUserData}/>
+                          <input type="number" className="form-control mb-1" name="age" placeholder="Age" onChange={getUserData}/>
+                          <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'age')}</div> 
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <input type="password" className="form-control" name="password" placeholder="Password" onChange={getUserData}/>
+                          <input type="password" className="form-control mb-1" name="password" placeholder="Password" onChange={getUserData}/>
+                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'password')}</div>
                         </div>
                     </div>
                     <div className="col-12">
