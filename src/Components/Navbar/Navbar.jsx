@@ -4,7 +4,7 @@ import logo from '../../images/logo.png'
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bgnav py-3">
+    <nav className="navbar navbar-expand-lg bgnav py-3 shadow">
       <div className="container">
         <Link className="navbar-brand" to="home">
           <img src={logo} alt="logoImage" className='me-1' style={{width:'50px'}} />
