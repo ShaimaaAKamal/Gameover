@@ -4,14 +4,15 @@ import logo from '../../images/logo.png'
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-light">
+    <nav className="navbar navbar-expand-lg bgnav py-3">
       <div className="container">
         <Link className="navbar-brand" to="home">
-          <img src={logo} alt="logoImage" className='me-2' style={{width:'50px'}} />
-          <span>Game Over</span>
+          <img src={logo} alt="logoImage" className='me-1' style={{width:'50px'}} />
+          <span className='text-white'>Game Over</span>
         </Link>
+       
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+        <i className="fa-solid fa-bars text-white"></i>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto ms-lg-4 mb-2 mb-lg-0">
