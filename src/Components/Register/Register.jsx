@@ -12,8 +12,8 @@ export default function Register() {
            </div>
           </div>
           <div className="col-lg-6">
-             <div className='form p-5'>
-                <h5 className='text-center mb-5'>Create My Account!</h5>
+             <div className='form  p-4'>
+                <h5 className='text-center mt-3 mb-4'>Create My Account!</h5>
                 <form className='row'>
                     <div className="col-6">
                         <div class="mb-3">
@@ -42,15 +42,15 @@ export default function Register() {
                     </div>
                     <div className="col-12">
                         <div class="mb-3">
-                          <button className='w-100 btn'>Create Account</button>
+                          <button className='w-100 btn py-2'>Create Account</button>
                         </div>
                     </div>
                 </form>
-                <p>This site is protected by reCAPTCHA and the Google 
-                  <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                <p className='small text-secondary text-center pb-3 mb-0'>This site is protected by reCAPTCHA and the Google 
+                  <a href="https://policies.google.com/privacy" className='text-reset'>Privacy Policy</a> and <a className='text-reset' href="https://policies.google.com/terms">Terms of Service</a> apply.
                 </p>
-                <p>
-                    <span>Already a member?</span> <Link to='login' className='text-info'><span>Log In</span><i className="fa-solid fa-chevron-right"></i></Link>
+                <p className='small text-secondary text-center pt-4  borderTop d-flex align-items-center justify-content-center'>
+                    <span>Already a member?</span> <Link to='login' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Log In</span><i className="fa-sm ms-1 fa-solid pt-1 fa-chevron-right"></i></Link>
                 </p>
              </div>
           </div>

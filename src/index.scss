@@ -4,6 +4,11 @@ $navColor:#272B31;
 $navTextColor:#9A9B9D;
 $subNavBg:#11CAF0;
 $sitebg:#272B31;
+$formbg:#32383E;
+
+.borderTop{
+    border-top:.1px solid #4F5458 
+}
 
 body{
     background-color:#272B31 !important;
@@ -30,6 +35,21 @@ body{
             &:hover{
                 color:rgba(255, 255, 255, 0.8);
             }
+        }
+    }
+
+    .form{
+        background-color: $formbg;
+        color:#A9AAAA;
+        .form-control{
+            background-color: #1C1E22;
+            border:none;
+            padding:.5rem .9rem;
+        }
+        button{
+            background-color: #393F43;
+            color:#fff;
+            border:.5px solid #1C1E22;
         }
     }
     
