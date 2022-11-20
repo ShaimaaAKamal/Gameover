@@ -52,19 +52,16 @@ function App() {
             );
           }}
         ]},
-        {path:'Categories',element:<Category/>,children:[
+        {path:'Categories',element:<Category/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
-          {path:'racing',element:<DisplayedGames/>},
-          {path:'sports',element:<DisplayedGames/>},
-          {path:'social',element:<DisplayedGames/>},
-          {path:'shooter',element:<DisplayedGames/>},
-          {path:'open-world',element:<DisplayedGames/>},
-          {path:'zombie',element:<DisplayedGames/>},
-          {path:'fantasy',element:<DisplayedGames/>},
-          {path:'action-rpg',element:<DisplayedGames/>},
-          {path:'action',element:<DisplayedGames/>},
-          {path:'flight',element:<DisplayedGames/>},
-          {path:'battle-royale',element:<DisplayedGames/>},
+          {path:':category',element:<DisplayedGames/>,
+           loader: async ({ params }) => {
+            return axios.get(
+              `https://free-to-play-games-database.p.rapidapi.com/api/games?category=${params.category}`,
+               {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
+              'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
+            );
+          }},
         ]
         }
       ]}
