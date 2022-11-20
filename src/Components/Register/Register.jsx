@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Register() {
   const [user,setUser]=useState({
-      ' first-name':'',
+      'first-name':'',
       'last-name':'',
       'age':0,
       'email':'',
@@ -14,7 +14,6 @@ export default function Register() {
       const myuser={...user};
       myuser[e.target.name]=e.target.value;
       setUser(myuser)
-      console.log(user);
   }
   return (
     <div className="container py-5 my-5">
@@ -30,27 +29,27 @@ export default function Register() {
                 <form className='row'>
                     <div className="col-6">
                         <div className="mb-3">
-                          <input type="text" className="form-control" id="first-name" placeholder="First Name" onChange={getUserData}/>
+                          <input type="text" className="form-control" name="first-name" placeholder="First Name" onChange={getUserData}/>
                         </div>
                     </div>
                     <div className="col-6">
                         <div className="mb-3">
-                          <input type="text" className="form-control" id="last-name" placeholder="Last Name" onChange={getUserData}/>
+                          <input type="text" className="form-control" name="last-name" placeholder="Last Name" onChange={getUserData}/>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <input type="email" className="form-control" id="email" placeholder="Email Address" onChange={getUserData}/>
+                          <input type="email" className="form-control" name="email" placeholder="Email Address" onChange={getUserData}/>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <input type="number" className="form-control" id="age" placeholder="Age" onChange={getUserData}/>
+                          <input type="number" className="form-control" name="age" placeholder="Age" onChange={getUserData}/>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <input type="password" className="form-control" id="password" placeholder="Password" onChange={getUserData}/>
+                          <input type="password" className="form-control" name="password" placeholder="Password" onChange={getUserData}/>
                         </div>
                     </div>
                     <div className="col-12">
@@ -63,7 +62,7 @@ export default function Register() {
                   <a href="https://policies.google.com/privacy" className='text-reset'>Privacy Policy</a> and <a className='text-reset' href="https://policies.google.com/terms">Terms of Service</a> apply.
                 </p>
                 <p className='small text-secondary text-center pt-4  borderTop d-flex align-items-center justify-content-center'>
-                    <span>Already a member?</span> <Link to='/login' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Log In</span><i className="fa-sm ms-1 fa-solid pt-1 fa-chevron-right"></i></Link>
+                    <span>Already a member?</span> <Link to='/login' className='mx-1 text-decoration-none d-flex align-items-center text-info'><span>Log In</span><i className="fa-sm ms-1 fa-solname pt-1 fa-chevron-right"></i></Link>
                 </p>
              </div>
           </div>
