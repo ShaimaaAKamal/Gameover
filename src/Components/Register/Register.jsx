@@ -8,10 +8,10 @@ export default function Register() {
   const [user,setUser]=useState({
       'first-name':'',
       'last-name':'',
-      'age':0,
       'email':'',
       'password':''
-  })
+  });
+  const [validationErrorsList,setValidationErrorsList]=useState([]);
   const getUserData=(e)=>{
       const myuser={...user};
       myuser[e.target.name]=e.target.value;
