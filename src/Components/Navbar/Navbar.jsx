@@ -63,9 +63,9 @@ export default function Navbar() {
                   </li>
             </ul>
             <div>
-              <NavLink className='text-decoration-none text-secondary me-3 fs-6' to='login'>Login</NavLink>
-              <NavLink className='btn btn-outline-info' to='register'>Join Free</NavLink>
-              <button className='btn btn-outline-info'>Logout</button>
+              <Link className='text-decoration-none  me-3 fs-6 loginlink' to='login'>Login</Link>
+              <Link className='btn btn-outline-info' to='register'>Join Free</Link>
+              <button className='btn btn-outline-info ms-2'>Logout</button>
             </div>
         </div>
       </div>
