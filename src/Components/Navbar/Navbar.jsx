@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link ,NavLink, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.png'
-export default function Navbar({userData,setUser}) {
+export default function Navbar({userData,setUser,setToken}) {
 const navigate=useNavigate()
 
   const logout=()=>{
     localStorage.removeItem('token');
+    setToken(null);
     setUser(null);
     navigate('/login');
 }
