@@ -7,6 +7,7 @@ import General from '../../js/General';
 const validate=new Validation();
 const general=new General();
 export default function Register() {
+  const [loading,setLoading]=useState(false)
   const navigate=useNavigate()
   const [user,setUser]=useState({
       'first_name':'',
@@ -31,7 +32,9 @@ export default function Register() {
          setValidationErrorsList(validationResult.error.details);
      }
      else{
+         setLoading(true)
           const {data}=await axios.post(`https://route-egypt-api.herokuapp.com/signup`, user);
+          setLoading(false)
           if(data.message === 'success')
           navigate('/login')
           else
@@ -89,7 +92,10 @@ export default function Register() {
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
-                          <button className='w-100 btn py-2'>Create Account</button>
+                          <button className='w-100 btn py-2'>
+                          {!loading &&<span>Create Account</span>}
+                       {loading&& <span class="spinner-border text-info" role="status"></span>}
+                            </button>
                         </div>
                     </div>
                 </form>

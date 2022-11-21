@@ -9,6 +9,7 @@ const validate=new Validation();
 const general=new General();
 
 export default function Login({getUserData}) {
+  const [loading,setLoading]=useState(false)
   const navigate=useNavigate()
 
   const [credtientials,setCredientals]=useState({
@@ -27,7 +28,9 @@ export default function Login({getUserData}) {
     if(validationResult.error){
       setValidationErrorsList(validationResult.error.details);
   }else{
+    setLoading(true)
     const {data}=await axios.post(`https://route-egypt-api.herokuapp.com/signin`, credtientials);
+    setLoading(false)
     if(data.message === 'success'){
       {localStorage.setItem('token',data.token);
       await getUserData(data.token)
@@ -79,7 +82,10 @@ const setCredtientails=(e)=>{
                 </div>
                 <div className="col-12">
                     <div className="mb-3">
-                      <button className='w-100 btn py-2'>Login</button>
+                      <button className='w-100 btn py-2'>
+                       {!loading &&<span>Login</span>}
+                       {loading&& <span class="spinner-border text-info" role="status"></span>}
+                      </button>
                     </div>
                 </div>
             </form>
