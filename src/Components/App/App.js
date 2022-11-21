@@ -19,7 +19,9 @@ import { useState } from "react";
 
 function App() {
   const [userData,setUserData]=useState(null)
+  const [token,setToken]=useState(localStorage.getItem('token'))
   const getUserData=(token)=>{
+    setToken(token);
     let user=jwt_decode(token);
     setUserData(user);
   }
@@ -34,13 +36,13 @@ function App() {
 
   
   const routes=createBrowserRouter([
-    {path:'',element:<Layout userData={userData} setUser={setUserData}/>,errorElement:<NotFound/>,children:[
-      {index:true,element:<RedirectLogin/>},
+      {path:'',element:<Layout userData={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
+      {index:true,element:<RedirectLogin setUser={setUserData} setToken={setToken}/>},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
       {path:'login',element:<Login getUserData={getUserData}/>},
       {path:'register',element:<Register/>},
-      {path:'games',element:<Games/>,children:[
-        {path:'all',element:<ProtectedRoute><All/></ProtectedRoute>},
+      {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
+        {path:'all',element:<All/>},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
           {path:':platform' ,element:<DisplayedGames/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
