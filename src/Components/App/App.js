@@ -16,6 +16,7 @@ import RedirectLogin from "../RedirectLogin/RedirectLogin";
 import jwt_decode from "jwt-decode";
 import ProtectedRoute from "../ProtectedRoute/ProductedRoute";
 import { useState } from "react";
+import GuestRoute from '../GuestRoute/GuestRoute'
 
 function App() {
   const [userData,setUserData]=useState(null)
@@ -39,8 +40,8 @@ function App() {
       {path:'',element:<Layout userData={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin setUser={setUserData} setToken={setToken}/>},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
-      {path:'login',element:<Login getUserData={getUserData}/>},
-      {path:'register',element:<Register/>},
+      {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
+      {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
         {path:'all',element:<All/>},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
