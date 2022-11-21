@@ -1,8 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import auth from '../../images/auth.jpg';
 import logo from '../../images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Validation from '../../js/Validation';
+const validate=new Validation();
 export default function Login() {
+  const navigate=useNavigate()
+
+  const [credtientials,setCredientals]=useState({
+    email:'',
+    password:''
+  })
+
+  const [validationErrorsList,setValidationErrorsList]=useState([]);
+  const [apiError,setApiError]=useState('');
+
+ const handleLoginSubmit=async (e)=>{
+    setValidationErrorsList([]);
+    setApiError('');
+    e.preventDefault();
+    const validationResult=validate.validateLoginForm(credtientials)
+    console.log(validationResult);
+    if(validationResult.error){
+      setValidationErrorsList(validationResult.error.details);
+  }else{
+    const {data}=await axios.post(`https://route-egypt-api.herokuapp.com/signin`, credtientials);
+    if(data.message === 'success'){
+      {localStorage.setItem('token',data.token)
+      navigate('/home')}
+    }else{
+      setApiError(data.message);
+    }
+  }
+
+ }
+
+ const getMessage=(validationErrorsList,key)=>{
+  const  ErrorElement=validationErrorsList.find(error => error.context.label === key);
+  let message=(ErrorElement)?ErrorElement.message:'';
+  return message;
+}
+
+
+const setCredtientails=(e)=>{
+   const myCredtientials=credtientials;
+   myCredtientials[e.target.name]=e.target.value;
+   setCredientals(myCredtientials)
+}
+
   return (
     <div className="container py-5 my-5 ">
     <div className="row g-0">
