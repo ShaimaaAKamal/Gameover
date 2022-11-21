@@ -8,7 +8,7 @@ import General from '../../js/General';
 const validate=new Validation();
 const general=new General();
 
-export default function Login() {
+export default function Login({getUserData}) {
   const navigate=useNavigate()
 
   const [credtientials,setCredientals]=useState({
@@ -29,8 +29,9 @@ export default function Login() {
   }else{
     const {data}=await axios.post(`https://route-egypt-api.herokuapp.com/signin`, credtientials);
     if(data.message === 'success'){
-      {localStorage.setItem('token',data.token)
-      navigate('/home')}
+      {localStorage.setItem('token',data.token);
+       getUserData(data.token)
+       navigate('/home')}
     }else{
       setApiError(data.message);
     }
