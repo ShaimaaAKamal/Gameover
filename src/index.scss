@@ -36,6 +36,9 @@ body{
                 color:rgba(255, 255, 255, 0.8);
             }
         }
+        .BtnWidth{
+            width:100%;
+        }
     }
 
     .form{
@@ -64,3 +67,13 @@ body{
 
 }
 
+@media screen and (min-width:992px) {
+  body{
+    nav{
+        .BtnWidth{
+            width:auto;
+        }
+    }
+    
+  }
+}
