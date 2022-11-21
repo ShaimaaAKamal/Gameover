@@ -29,8 +29,10 @@ function App() {
   }
 
   const getData=(key,value,type='games')=>{
+    let url=(type === 'all')?`https://free-to-play-games-database.p.rapidapi.com/api/games`
+    :`https://free-to-play-games-database.p.rapidapi.com/api/${type}?${key}=${value}`;
     return axios.get(
-      `https://free-to-play-games-database.p.rapidapi.com/api/${type}?${key}=${value}`,
+      `${url}`,
        {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
       'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
     );
@@ -45,7 +47,7 @@ function App() {
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
-        {path:'all',element:<All/>},
+        {path:'all',element:<All/>,loader: async ({params}) =>  getData('id',params.id,'all')},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
           {path:':platform' ,element:<DisplayedGames/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
