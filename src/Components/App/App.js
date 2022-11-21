@@ -28,9 +28,9 @@ function App() {
     setUserData(user);
   }
 
-  const getData=(key,value)=>{
+  const getData=(key,value,type='games')=>{
     return axios.get(
-      `https://free-to-play-games-database.p.rapidapi.com/api/games?${key}=${value}`,
+      `https://free-to-play-games-database.p.rapidapi.com/api/${type}?${key}=${value}`,
        {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
       'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
     );
@@ -41,7 +41,7 @@ function App() {
       {path:'',element:<Layout token={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin setToken={setToken}/>},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>,loader: async () =>  getData('sort-by','popularity')},
-      {path:'gameDetails/:id',element:<ProtectedRoute ><GameDetails/></ProtectedRoute>},
+      {path:'gameDetails/:id',element:<ProtectedRoute ><GameDetails/></ProtectedRoute>,loader: async ({params}) =>  getData('id',params.id,'game')},
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
