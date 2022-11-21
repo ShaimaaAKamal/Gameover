@@ -65,14 +65,14 @@ const setCredtientails=(e)=>{
                 <div className="col-12">
                     <div className="mb-3">
                       <input type="email" className="form-control" name="email" placeholder="Email Address" onChange={setCredtientails}/>
-                      {(apiError && apiError.split(' ')[0] === 'email')?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
+                      {(apiError && apiError.split(' ')[0] === 'email')?<div className='text-danger py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
                       <div className=' text-warning py-0 small text-cenetr '>{general.getMessage(validationErrorsList,'email')}</div>
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="mb-3">
                       <input type="password" className="form-control" name="password" placeholder="Password" onChange={setCredtientails}/>
-                      {(apiError&& apiError.split(' ')[0] !== 'email')?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
+                      {(apiError&& apiError.split(' ')[0] !== 'email')?<div className='text-danger py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
                       <div className=' text-warning py-0 small text-cenetr '>{general.getMessage(validationErrorsList,'password')}</div>
                     </div>
                 </div>
