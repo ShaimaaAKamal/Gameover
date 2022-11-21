@@ -39,7 +39,7 @@ function App() {
   const routes=createBrowserRouter([
       {path:'',element:<Layout token={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin setToken={setToken}/>},
-      {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
+      {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>,loader: async () =>  getData('sort-by','popularity')},
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
