@@ -60,19 +60,22 @@ export default function Register() {
                 <form className='row' onSubmit={FormSubmit}>
                     <div className="col-6">
                         <div className="mb-3">
-                          <input type="text" className="form-control mb-1" name="first-name" placeholder="First Name" onChange={getUserData}/>
-                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'first-name')}</div>                        
+                          <input type="text" className="form-control mb-1" name="first_name" placeholder="First Name" onChange={getUserData}/>
+                          {(apiError && apiError['first_name'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['first_name'].message}</div>:'' }                       
+                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'first_name')}</div>                        
                         </div>
                     </div>
                     <div className="col-6">
                         <div className="mb-3">
-                          <input type="text" className="form-control mb-1" name="last-name" placeholder="Last Name" onChange={getUserData}/>     
-                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'last-name')}</div>
+                          <input type="text" className="form-control mb-1" name="last_name" placeholder="Last Name" onChange={getUserData}/>  
+                          {(apiError && apiError['last_name'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['last_name'].message}</div>:'' }                          
+                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'last_name')}</div>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
                           <input type="email" className="form-control mb-1" name="email" placeholder="Email Address" onChange={getUserData}/>
+                          {(apiError && apiError['email'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['email'].message}</div>:'' }                       
                           <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'email')}</div>
 
                         </div>
@@ -80,12 +83,15 @@ export default function Register() {
                     <div className="col-12">
                         <div className="mb-3">
                           <input type="number" className="form-control mb-1" name="age" placeholder="Age" onChange={getUserData}/>
+                          {(apiError && apiError['age'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['age'].message}</div>:'' }                       
                           <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'age')}</div> 
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
                           <input type="password" className="form-control mb-1" name="password" placeholder="Password" onChange={getUserData}/>
+                          {(apiError && apiError['password'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['password'].message}</div>:'' }                       
+
                           <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'password')}</div>
                         </div>
                     </div>
