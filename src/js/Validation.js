@@ -13,8 +13,8 @@ const textError=(key)=>{
 export default class Validation{
      validateRegisterForm(user){
         const schema=Joi.object({
-            'first-name': Joi.string().alphanum().min(3).max(30).required().messages(textError('First name')),
-            'last-name': Joi.string().alphanum().min(3).max(30).required().messages(textError('Last name')),
+            'first_name': Joi.string().alphanum().min(3).max(30).required().messages(textError('First name')),
+            'last_name': Joi.string().alphanum().min(3).max(30).required().messages(textError('Last name')),
              'age': Joi.number().min(10).max(70).required().messages({
                'number.base':`Age must be Number`,
                'number.empty': `Age is required`,
