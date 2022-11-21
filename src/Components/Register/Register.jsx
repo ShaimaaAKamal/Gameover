@@ -6,27 +6,34 @@ const validate=new Validation();
 export default function Register() {
   const navigate=useNavigate()
   const [user,setUser]=useState({
-      'first-name':'',
-      'last-name':'',
+      'first_name':'',
+      'last_name':'',
       'email':'',
       'password':''
   });
   const [validationErrorsList,setValidationErrorsList]=useState([]);
+  const [apiError,setApiError]=useState(null);
   const getUserData=(e)=>{
       const myuser={...user};
       myuser[e.target.name]=e.target.value;
       setUser(myuser)
   }
 
-  const FormSubmit=(e)=>{
+  const FormSubmit=async(e)=>{
+    setValidationErrorsList([]);
+    setApiError([]);
      e.preventDefault();
      const validationResult=validate.validateRegisterForm(user)
      if(validationResult.error){
          setValidationErrorsList(validationResult.error.details);
      }
      else{
-         //send data to api
-         navigate('/login')
+          const {data}=await axios.post(`https://route-egypt-api.herokuapp.com/signup`, user);
+          if(data.message === 'success')
+          navigate('/login')
+          else
+          {setApiError(data.errors);
+          }
      }
   }
 
