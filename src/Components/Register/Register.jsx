@@ -78,7 +78,6 @@ export default function Register() {
                           <input type="email" className="form-control mb-1" name="email" placeholder="Email Address" onChange={getUserData}/>
                           {(apiError && apiError['email'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['email'].message}</div>:'' }                       
                           <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'email')}</div>
-
                         </div>
                     </div>
                     <div className="col-12">
