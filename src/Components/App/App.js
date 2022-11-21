@@ -15,6 +15,7 @@ import Category from '../Categories/Category'
 import RedirectLogin from "../RedirectLogin/RedirectLogin";
 import jwt_decode from "jwt-decode";
 import ProtectedRoute from "../ProtectedRoute/ProductedRoute";
+import GameDetails from '../GameDetails/GameDetails'
 import { useState } from "react";
 import GuestRoute from '../GuestRoute/GuestRoute'
 
@@ -40,6 +41,7 @@ function App() {
       {path:'',element:<Layout token={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin setToken={setToken}/>},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>,loader: async () =>  getData('sort-by','popularity')},
+      {path:'gameDetails/:id',element:<ProtectedRoute ><GameDetails/></ProtectedRoute>},
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
