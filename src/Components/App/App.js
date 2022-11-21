@@ -31,7 +31,7 @@ function App() {
   }
   
   const routes=createBrowserRouter([
-    {path:'',element:<Layout/>,errorElement:<NotFound/>,children:[
+    {path:'',element:<Layout userData={userData}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin/>},
       {path:'home',element:<Home/>},
       {path:'login',element:<Login getUserData={getUserData}/>},
