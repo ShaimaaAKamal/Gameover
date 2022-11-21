@@ -27,7 +27,7 @@ export default function Home() {
                <img src={item.thumbnail} alt={item.title} className='w-100' />
                <div className='d-flex align-items-center justify-content-between p-3'>
                 <h5 className='text-capitalize'>{item.title}</h5>
-                <h5><span className="badge bg-info">New</span></h5>
+                <h5><span className="badge bg-info">Free</span></h5>
                </div>
             </div>
           </div>)
