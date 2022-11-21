@@ -2,7 +2,7 @@ import React from 'react';
 import { Link ,NavLink} from 'react-router-dom';
 import logo from '../../images/logo.png'
 
-export default function Navbar() {
+export default function Navbar({userData}) {
   return (
     <nav className="navbar navbar-expand-lg bgnav py-3 shadow">
       <div className="container">
@@ -15,7 +15,7 @@ export default function Navbar() {
         <i className="fa-solid fa-bars text-white"></i>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto ms-lg-4 mb-2 mb-lg-0">
+           {userData && <ul className="navbar-nav me-auto ms-lg-4 mb-2 mb-lg-0">
                   <li className="nav-item">
                     <NavLink className="nav-link" aria-current="page" to="home">Home</NavLink>
                   </li>
@@ -61,12 +61,11 @@ export default function Navbar() {
 
                     </ul>
                   </li>
-            </ul>
-            <div>
-              <Link className='text-decoration-none  me-3 fs-6 loginlink' to='login'>Login</Link>
-              <Link className='btn btn-outline-info' to='register'>Join Free</Link>
-              <button className='btn btn-outline-info ms-2'>Logout</button>
-            </div>
+            </ul>}
+           
+            { !userData && <div className='w-100 d-flex flex-column align-items-center flex-lg-row justify-content-lg-end'> <Link className='text-decoration-none  me-3 fs-6 loginlink' to='login'>Login</Link>
+              <Link className='btn btn-outline-info mt-3 mt-lg-0 BtnWidth' to='register'>Join Free</Link></div>}
+             {userData && <button className='btn btn-outline-info ms-2'>Logout</button>}
         </div>
       </div>
 </nav>
