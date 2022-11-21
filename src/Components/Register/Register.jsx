@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import auth from '../../images/auth.jpg'
 import { Link, useNavigate } from 'react-router-dom'
-import Validation from '../../js/Validation'
+import Validation from '../../js/Validation';
+import General from '../../js/General';
 const validate=new Validation();
+const general=new General();
 export default function Register() {
   const navigate=useNavigate()
   const [user,setUser]=useState({
@@ -37,16 +39,7 @@ export default function Register() {
           }
      }
   }
-
-  const getMessage=(validationErrorsList,key)=>{
-    const  ErrorElement=validationErrorsList.find(error => error.context.label === key);
-    let message=(ErrorElement)?ErrorElement.message:'';
-    return message;
-  }
-
   
-  
-
   return (
     <div className="container py-5 my-5">
         <div className="row g-0">
@@ -63,28 +56,28 @@ export default function Register() {
                         <div className="mb-3">
                           <input type="text" className="form-control mb-1" name="first_name" placeholder="First Name" onChange={getUserData}/>
                           {(apiError && apiError['first_name'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['first_name'].message}</div>:'' }                       
-                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'first_name')}</div>                        
+                          <div className=' text-warning py-0 small text-cenetr'>{general.getMessage(validationErrorsList,'first_name')}</div>                        
                         </div>
                     </div>
                     <div className="col-6">
                         <div className="mb-3">
                           <input type="text" className="form-control mb-1" name="last_name" placeholder="Last Name" onChange={getUserData}/>  
                           {(apiError && apiError['last_name'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['last_name'].message}</div>:'' }                          
-                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'last_name')}</div>
+                          <div className=' text-warning py-0 small text-cenetr'>{general.getMessage(validationErrorsList,'last_name')}</div>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
                           <input type="email" className="form-control mb-1" name="email" placeholder="Email Address" onChange={getUserData}/>
                           {(apiError && apiError['email'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['email'].message}</div>:'' }                       
-                          <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'email')}</div>
+                          <div className=' text-warning py-0 small text-cenetr '>{general.getMessage(validationErrorsList,'email')}</div>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="mb-3">
                           <input type="number" className="form-control mb-1" name="age" placeholder="Age" onChange={getUserData}/>
                           {(apiError && apiError['age'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['age'].message}</div>:'' }                       
-                          <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'age')}</div> 
+                          <div className=' text-warning py-0 small text-cenetr '>{general.getMessage(validationErrorsList,'age')}</div> 
                         </div>
                     </div>
                     <div className="col-12">
@@ -92,7 +85,7 @@ export default function Register() {
                           <input type="password" className="form-control mb-1" name="password" placeholder="Password" onChange={getUserData}/>
                           {(apiError && apiError['password'])?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError['password'].message}</div>:'' }                       
 
-                          <div className=' text-warning py-0 small text-cenetr'>{getMessage(validationErrorsList,'password')}</div>
+                          <div className=' text-warning py-0 small text-cenetr'>{general.getMessage(validationErrorsList,'password')}</div>
                         </div>
                     </div>
                     <div className="col-12">

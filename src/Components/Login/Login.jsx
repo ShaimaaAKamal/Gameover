@@ -4,7 +4,10 @@ import logo from '../../images/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Validation from '../../js/Validation';
+import General from '../../js/General';
 const validate=new Validation();
+const general=new General();
+
 export default function Login() {
   const navigate=useNavigate()
 
@@ -21,7 +24,6 @@ export default function Login() {
     setApiError('');
     e.preventDefault();
     const validationResult=validate.validateLoginForm(credtientials)
-    console.log(validationResult);
     if(validationResult.error){
       setValidationErrorsList(validationResult.error.details);
   }else{
@@ -36,11 +38,6 @@ export default function Login() {
 
  }
 
- const getMessage=(validationErrorsList,key)=>{
-  const  ErrorElement=validationErrorsList.find(error => error.context.label === key);
-  let message=(ErrorElement)?ErrorElement.message:'';
-  return message;
-}
 
 
 const setCredtientails=(e)=>{
@@ -68,14 +65,14 @@ const setCredtientails=(e)=>{
                     <div className="mb-3">
                       <input type="email" className="form-control" name="email" placeholder="Email Address" onChange={setCredtientails}/>
                       {(apiError && apiError.split(' ')[0] === 'email')?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
-                      <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'email')}</div>
+                      <div className=' text-warning py-0 small text-cenetr '>{general.getMessage(validationErrorsList,'email')}</div>
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="mb-3">
                       <input type="password" className="form-control" name="password" placeholder="Password" onChange={setCredtientails}/>
                       {(apiError&& apiError.split(' ')[0] !== 'email')?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
-                      <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'password')}</div>
+                      <div className=' text-warning py-0 small text-cenetr '>{general.getMessage(validationErrorsList,'password')}</div>
                     </div>
                 </div>
                 <div className="col-12">
