@@ -37,8 +37,8 @@ function App() {
 
   
   const routes=createBrowserRouter([
-      {path:'',element:<Layout userData={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
-      {index:true,element:<RedirectLogin setUser={setUserData} setToken={setToken}/>},
+      {path:'',element:<Layout token={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
+      {index:true,element:<RedirectLogin setToken={setToken}/>},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
