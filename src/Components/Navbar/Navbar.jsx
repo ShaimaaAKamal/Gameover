@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link ,NavLink} from 'react-router-dom';
+import { Link ,NavLink, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.png'
+export default function Navbar({userData,setUser}) {
+const navigate=useNavigate()
 
-export default function Navbar({userData}) {
+  const logout=()=>{
+    localStorage.removeItem('token');
+    setUser(null);
+    navigate('/login');
+}
+
   return (
     <nav className="navbar navbar-expand-lg bgnav py-3 shadow">
       <div className="container">
@@ -65,7 +72,7 @@ export default function Navbar({userData}) {
            
             { !userData && <div className='w-100 d-flex flex-column align-items-center flex-lg-row justify-content-lg-end'> <Link className='text-decoration-none  me-3 fs-6 loginlink' to='login'>Login</Link>
               <Link className='btn btn-outline-info mt-3 mt-lg-0 BtnWidth' to='register'>Join Free</Link></div>}
-             {userData && <button className='btn btn-outline-info ms-2'>Logout</button>}
+             {userData && <button className='btn btn-outline-info ms-2' onClick={logout}>Logout</button>}
         </div>
       </div>
 </nav>

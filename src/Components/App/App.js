@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider , Navigate } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import Layout from '../Layout/Layout';
 import NotFound from '../NotFound/NotFound';
@@ -16,14 +16,13 @@ import RedirectLogin from "../RedirectLogin/RedirectLogin";
 import jwt_decode from "jwt-decode";
 import ProtectedRoute from "../ProtectedRoute/ProductedRoute";
 import { useState } from "react";
+
 function App() {
   const [userData,setUserData]=useState(null)
   const getUserData=(token)=>{
     let user=jwt_decode(token);
     setUserData(user);
   }
-
-
 
   const getData=(key,value)=>{
     return axios.get(
@@ -32,15 +31,16 @@ function App() {
       'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
     );
   }
+
   
   const routes=createBrowserRouter([
-    {path:'',element:<Layout userData={userData}/>,errorElement:<NotFound/>,children:[
+    {path:'',element:<Layout userData={userData} setUser={setUserData}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin/>},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
       {path:'login',element:<Login getUserData={getUserData}/>},
       {path:'register',element:<Register/>},
       {path:'games',element:<Games/>,children:[
-        {path:'all',element:<All/>},
+        {path:'all',element:<ProtectedRoute><All/></ProtectedRoute>},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
           {path:':platform' ,element:<DisplayedGames/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
