@@ -42,6 +42,13 @@ body{
         }
     }
 
+    .homeHeader{
+      background-image: url('../src/images/home.png');  
+      background-position: center center;
+      background-repeat:no-repeat;
+
+    }
+
     .form{
         background-color: $formbg;
         color:#A9AAAA;
