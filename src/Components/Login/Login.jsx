@@ -30,8 +30,9 @@ export default function Login({getUserData}) {
     const {data}=await axios.post(`https://route-egypt-api.herokuapp.com/signin`, credtientials);
     if(data.message === 'success'){
       {localStorage.setItem('token',data.token);
-       getUserData(data.token)
-       navigate('/home')}
+      await getUserData(data.token)
+       navigate('/home')
+      }
     }else{
       setApiError(data.message);
     }

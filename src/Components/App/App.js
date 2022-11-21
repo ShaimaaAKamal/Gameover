@@ -14,13 +14,16 @@ import Sort from '../Sort/Sort';
 import Category from '../Categories/Category'
 import RedirectLogin from "../RedirectLogin/RedirectLogin";
 import jwt_decode from "jwt-decode";
+import ProtectedRoute from "../ProtectedRoute/ProductedRoute";
 import { useState } from "react";
 function App() {
   const [userData,setUserData]=useState(null)
   const getUserData=(token)=>{
-    let user= jwt_decode(token);
+    let user=jwt_decode(token);
     setUserData(user);
   }
+
+
 
   const getData=(key,value)=>{
     return axios.get(
@@ -33,7 +36,7 @@ function App() {
   const routes=createBrowserRouter([
     {path:'',element:<Layout userData={userData}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin/>},
-      {path:'home',element:<Home/>},
+      {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
       {path:'login',element:<Login getUserData={getUserData}/>},
       {path:'register',element:<Register/>},
       {path:'games',element:<Games/>,children:[
