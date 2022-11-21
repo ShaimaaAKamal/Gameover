@@ -5,6 +5,7 @@ $navTextColor:#9A9B9D;
 $subNavBg:#11CAF0;
 $sitebg:#272B31;
 $formbg:#32383E;
+$cardColor:#32383E;
 
 .borderTop{
     border-top:.1px solid #4F5458 
@@ -47,6 +48,13 @@ body{
       background-position: center center;
       background-repeat:no-repeat;
 
+    }
+    .HomeCard{
+        background-color: $cardColor;
+        transition: transform 1s;
+        &:hover{
+            transform: scale(1.04);
+        }
     }
 
     .form{
