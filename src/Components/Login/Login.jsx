@@ -63,15 +63,19 @@ const setCredtientails=(e)=>{
               <img src={logo} alt="logo" className='w-25' />
             </div>
             <h5 className='text-center mt-3 mb-2'>Log in to GameOver</h5>
-            <form className='row pt-3 login'>
+            <form className='row pt-3 login' onSubmit={handleLoginSubmit}>
                 <div className="col-12">
                     <div className="mb-3">
-                      <input type="email" className="form-control" id="email" placeholder="Email Address"/>
+                      <input type="email" className="form-control" name="email" placeholder="Email Address" onChange={setCredtientails}/>
+                      {(apiError && apiError.split(' ')[0] === 'email')?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
+                      <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'email')}</div>
                     </div>
                 </div>
                 <div className="col-12">
                     <div className="mb-3">
-                      <input type="password" className="form-control" id="password" placeholder="Password"/>
+                      <input type="password" className="form-control" name="password" placeholder="Password" onChange={setCredtientails}/>
+                      {(apiError&& apiError.split(' ')[0] !== 'email')?<div className='text-warning py-0 small text-cenetr text-capitalize'>{apiError}</div>:'' }                       
+                      <div className=' text-warning py-0 small text-cenetr '>{getMessage(validationErrorsList,'password')}</div>
                     </div>
                 </div>
                 <div className="col-12">
