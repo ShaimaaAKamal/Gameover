@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 
 export default function Home() {
+  const navigate=useNavigate();
   let [popular,setPopular]=useState([])
   const {data}=useLoaderData();
-  console.log(data)
   useEffect(()=>{
     setPopular(data.slice(0,3))
   },[])
+  const gameDetails=(gameId)=>{
+    navigate(`/gameDetails/${gameId}`)
+  }
   return (
     <div className='container'>
         <div className='homeHeader text-center py-5'>
@@ -19,8 +22,8 @@ export default function Home() {
           <h2 className='py-3'><i className="fa-solid fa-robot"></i><span>Personalized Recommendations</span></h2>
           <div className="row gy-3">
            {
-            popular.map((item,index)=>  <div className="col-md-4">
-            <div className='HomeCard' key={index}>
+            popular.map((item,index)=>  <div className="col-md-4" key={index} >
+            <div className='HomeCard' onClick={()=>gameDetails(item.id)}>
                <img src={item.thumbnail} alt={item.title} className='w-100' />
                <div className='d-flex align-items-center justify-content-between p-3'>
                 <h5 className='text-capitalize'>{item.title}</h5>
