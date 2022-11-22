@@ -9,7 +9,8 @@ export default function GameDetails() {
   let [reqKeys,setReqKeys]=useState([])
   let [reqValues,setReqValues]=useState([])
   const [game,setGame]=useState({});
-  const [load,setLoad]=useState(true)
+  let [load,setLoad]=useState(true)
+  let [displayMin,setDisplayMin]=useState(true)
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -24,6 +25,7 @@ export default function GameDetails() {
        if(data['minimum_system_requirements']){
         setReqKeys(Object.keys(data['minimum_system_requirements']));
         setReqValues(Object.values(data['minimum_system_requirements']));
+        ((Object.values(data['minimum_system_requirements']).filter(value => value).length === 0))?setDisplayMin(false):setDisplayMin(true)
       }
      }
       }
@@ -52,7 +54,7 @@ export default function GameDetails() {
                 <h2 className='pb-2 fs-1'>{game.title}</h2>
                 <h4>About {game.title}</h4>
                 <p>{game.description}</p>
-                 {game['minimum_system_requirements']&& (
+                 {(game['minimum_system_requirements'] && displayMin)&& (
                        <>
                            <h4 className='py-3'>Minimum System Requirements</h4>
                            <div>
