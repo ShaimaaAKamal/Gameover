@@ -12,7 +12,7 @@ const navigate=useNavigate()
 }
 
   return (
-    <nav className="navbar navbar-expand-lg bgnav py-3 shadow">
+    <nav className="navbar navbar-expand-lg bgnav py-3 shadow position-fixed w-100">
       <div className="container">
         <Link className="navbar-brand" to="home">
           <img src={logo} alt="logoImage" className='me-1' style={{width:'50px'}} />
