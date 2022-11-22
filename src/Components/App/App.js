@@ -50,13 +50,13 @@ function App() {
         {path:'all',element:<All/>,loader: async ({params}) =>  getData('id',params.id,'all')},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
-          {path:':platform' ,element:<DisplayedGames/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
+          {path:':platform' ,element:<All/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
         {path:'sort-by',element:<Sort/>,children:[
           {index:true,element:<DisplayedGames/>,loader: async () =>  getData('sort-by','')},
-          {path:':sortItem',element:<DisplayedGames/>,loader: async ({ params }) =>  getData('sort-by',params.sortItem)}]},
+          {path:':sortItem',element:<All/>,loader: async ({ params }) =>  getData('sort-by',params.sortItem)}]},
         {path:'Categories',element:<Category/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
-          {path:':category',element:<DisplayedGames/>,loader: async ({ params }) =>  getData('category',params.category)}
+          {path:':category',element:<All/>,loader: async ({ params }) =>  getData('category',params.category)}
         ]}
       ]}
     ]}
