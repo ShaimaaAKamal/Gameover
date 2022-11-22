@@ -7,20 +7,32 @@ $sitebg:#272B31;
 $formbg:#32383E;
 $cardColor:#32383E;
 
-.borderTop{
-    border-top:.1px solid #4F5458 
-}
-
 
 
 body{
+  
     background-color:#272B31 !important;
     color:$navTextColor !important;
+
+    .borderTop{
+        border-top:.1px solid #4F5458 
+    }
+    .fa-rotate-45{
+        transform: rotate(45deg);
+    }
+    .text-pink{
+        color:pink;
+    }
+    .text-purple{
+       color:purple;
+    }
+    
   .parent{
     padding-top: 65px;
   }
     nav{
         background-color: $navColor;
+        z-index:100;
         span{
             font-family:'Xanh Mono', monospace;
         }
