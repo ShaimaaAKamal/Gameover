@@ -16,7 +16,9 @@ $cardColor:#32383E;
 body{
     background-color:#272B31 !important;
     color:$navTextColor !important;
-
+  .parent{
+    padding-top: 65px;
+  }
     nav{
         background-color: $navColor;
         span{
