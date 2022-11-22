@@ -7,7 +7,6 @@ export default function Home() {
   let [load,setLoad]=useState(true)
   const navigate=useNavigate();
   let [popular,setPopular]=useState([])
-  // const {data}=useLoaderData();
   useEffect(()=>{
      async function fetchData(){
       const {data}=await general.getData('sort-by','popularity')
