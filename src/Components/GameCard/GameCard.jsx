@@ -2,9 +2,9 @@ import React from 'react'
 
 export default function GameCard({game,gameDetails}) {
   return (
-            <div className='HomeCard' onClick={()=>gameDetails(game.id)}>
+            <div className='HomeCard rounded-2' onClick={()=>gameDetails(game.id)}>
                <img src={game.thumbnail} alt={game.title} className='w-100' />
-               <div className='p-3'>
+               <div className='p-3 pb-2'>
                   <div className='d-flex align-games-center justify-content-between'>
                     <h5 className='text-capitalize'>{((game['title']).length >12)?
                     `${game['title'].split('').slice(0,12).join('')}....`:game['title']}</h5>
@@ -13,7 +13,7 @@ export default function GameCard({game,gameDetails}) {
                   <p className='text-muted small my-0'>
                     {`${game['short_description'].split('').slice(0,25).join('')}....`}
                   </p>
-                  <div className='d-flex align-games-center justify-content-between pt-3'>
+                  <div className='d-flex align-items-center justify-content-between pt-2'>
                       <i className="fa-solid fa-square-plus"></i>
                       <div className=' small d-flex align-games-center'>
                            <span className='me-2 category'>{game.genre}</span>
