@@ -28,36 +28,25 @@ function App() {
     setUserData(user);
   }
 
-  const getData=(key,value,type='games')=>{
-    let url=(type === 'all')?`https://free-to-play-games-database.p.rapidapi.com/api/games`
-    :`https://free-to-play-games-database.p.rapidapi.com/api/${type}?${key}=${value}`;
-    return axios.get(
-      `${url}`,
-       {headers : {'X-RapidAPI-Key':'b52128808dmsh5826403ec30ac21p1b9548jsnfca5769e0b68',
-      'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'}}
-    );
-  }
-
   
   const routes=createBrowserRouter([
       {path:'',element:<Layout token={token} setUser={setUserData} setToken={setToken}/>,errorElement:<NotFound/>,children:[
       {index:true,element:<RedirectLogin setToken={setToken}/>},
-      // {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>,loader: async () =>  getData('sort-by','popularity')},
       {path:'home',element:<ProtectedRoute ><Home/></ProtectedRoute>},
-      {path:'gameDetails/:id',element:<ProtectedRoute ><GameDetails/></ProtectedRoute>,loader: async ({params}) =>  getData('id',params.id,'game')},
+      {path:'gameDetails/:id',element:<ProtectedRoute ><GameDetails/></ProtectedRoute>},
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
-        {path:'all',element:<All/>,loader: async ({params}) =>  getData('id',params.id,'all')},
+        {path:'all',element:<All/>},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
-          {path:':platform' ,element:<All/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
+          {path:':platform' ,element:<All/>}]},
         {path:'sort-by',element:<Sort/>,children:[
-          {index:true,element:<All/>,loader: async () =>  getData('sort-by','')},
-          {path:':sortItem',element:<All/>,loader: async ({ params }) =>  getData('sort-by',params.sortItem)}]},
+          {index:true,element:<All/>},
+          {path:':sortItem',element:<All/>}]},
           {path:'Categories',element:<Category/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
-          {path:':category',element:<All/>,loader: async ({ params }) =>  getData('category',params.category)}
+          {path:':category',element:<All/>}
         ]}
       ]}
     ]}
