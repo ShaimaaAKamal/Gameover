@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import PopularCard from '../PopularCard/PopularCard';
 import General from '../../js/General';
 import Loading from '../Loading/Loading';
 export default function Home() {
@@ -32,14 +33,8 @@ export default function Home() {
           <h2 className='py-3'><i className="fa-solid fa-robot"></i><span>Personalized Recommendations</span></h2>
           <div className="row gy-3">
            {
-            popular.map((item,index)=>  <div className="col-md-4" key={index} >
-            <div className='HomeCard' onClick={()=>gameDetails(item.id)}>
-               <img src={item.thumbnail} alt={item.title} className='w-100' />
-               <div className='d-flex align-items-center justify-content-between p-3'>
-                <h5 className='text-capitalize'>{item.title}</h5>
-                <h5><span className="badge bg-info">Free</span></h5>
-               </div>
-            </div>
+            popular.map((game,index)=>  <div className="col-md-4" key={index} >
+              <PopularCard game={game} gameDetails={gameDetails}/>
           </div>)
            }
           </div>
