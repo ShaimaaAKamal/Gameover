@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 export default function GameDetails() {
+
   const {data}=useLoaderData();
   let reqKeys,reqValues
   const [game,setGame]=useState(data);
@@ -10,7 +11,6 @@ export default function GameDetails() {
     reqKeys=Object.keys(game['minimum_system_requirements']);
     reqValues=Object.values(game['minimum_system_requirements']);
   }
-  console.log(game);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
