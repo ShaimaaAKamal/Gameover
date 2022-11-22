@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link ,NavLink, useNavigate} from 'react-router-dom';
 import logo from '../../images/logo.png'
+
 export default function Navbar({token,setToken}) {
 const navigate=useNavigate()
+
+const sortItems=['release-date','popularity','alphabetical','relevance'];
+const sortUrl=sortItems.map(item => `/games/sort-by/${item}`);
+const cateories=['racing','sports','social','shooter','open-World','zombie','fantasy','action-rpg','action','flight','battle-royale']
+const categoryUrl=cateories.map(item => `/games/Categories/${item}`);
+
 
   const logout=()=>{
     localStorage.removeItem('token');
     setToken(null);
-    // setUser(null);
     navigate('/login');
 }
 
@@ -44,10 +50,9 @@ const navigate=useNavigate()
                       Sort-by
                     </NavLink>
                     <ul className="dropdown-menu">
-                      <li><NavLink className="dropdown-item" to="games/sort-by/release-date">Release-Date</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/sort-by/popularity">Popularity</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/sort-by/alphabetical">Alphabetical</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/sort-by/relevance">Relevance</NavLink></li>
+                    {
+                      sortItems.map((item,index)=>  <li key={index}><NavLink  className='text-capitalize dropdown-item' to={sortUrl[index]}>{item}</NavLink></li>)
+                    } 
                     </ul>
                   </li>
                   <li className="nav-item dropdown">
@@ -55,18 +60,7 @@ const navigate=useNavigate()
                       Categories
                     </NavLink>
                     <ul className="dropdown-menu">
-                      <li><NavLink className="dropdown-item" to="games/Categories/racing">Racing</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/sports">Sports</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/social">Social</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/shooter">Shooter</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/open-world">Open-World</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/zombie">Zombie</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/fantasy">Fantasy</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/action-rpg">Action-rpg</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/action">Action</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/flight">Flight</NavLink></li>
-                      <li><NavLink className="dropdown-item" to="games/Categories/battle-royale">Battle-royale</NavLink></li>
-
+                    {cateories.map((item,index)=> <li key={index}><NavLink className='text-capitalize dropdown-item' to={categoryUrl[index]}>{item}</NavLink></li>)}
                     </ul>
                   </li>
             </ul>}
