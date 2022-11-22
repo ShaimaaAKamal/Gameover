@@ -9,7 +9,6 @@ import General from '../../js/General';
 export default function All() {
   const params=useParams();
   const location=useLocation()
-  console.log(location.pathname);
   const general=new General();
   let map=new Map(Object.entries(params))
   let index=useRef(24);
@@ -29,6 +28,10 @@ export default function All() {
      }
   useEffect(()=>{
        fetchData()
+       const drops=document.querySelectorAll('.dropdown-menu');
+       drops.forEach(drop=>
+        drop.classList.remove('show')
+       )
   },[])
   useEffect(()=>{
     fetchData()
