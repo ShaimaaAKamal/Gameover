@@ -84,7 +84,7 @@ const setCredtientails=(e)=>{
                     <div className="mb-3">
                       <button className='w-100 btn py-2'>
                        {!loading &&<span>Login</span>}
-                       {loading&& <span class="spinner-border text-info" role="status"></span>}
+                       {loading&& <span className="spinner-border text-info" role="status"></span>}
                       </button>
                     </div>
                 </div>
