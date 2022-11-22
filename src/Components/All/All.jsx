@@ -12,8 +12,13 @@ export default function All() {
   const [games,setGames]=useState([])
   const {data}=useLoaderData();
   useEffect(()=>{
+    if(index.current >=data.length) setMore(false)
     setGames(data.slice(0,index.current))
   },[])
+  useEffect(()=>{
+    if(index.current >= data.length) setMore(false)
+    setGames(data.slice(0,index.current))
+  },[data])
   const gameDetails=(gameId)=>{
     navigate(`/gameDetails/${gameId}`)
   }
@@ -26,6 +31,7 @@ export default function All() {
       setMore(false);
     }
   }
+
   return (
          <>
             <DisplayedGames games={games} gameDetails={gameDetails} moreGames={moreGames} more={more}/>
