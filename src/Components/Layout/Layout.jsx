@@ -7,7 +7,9 @@ export default function Layout({token,setToken}) {
   return (
     <> 
         <Navbar token={token}  setToken={setToken}/>
-        <Outlet/>
+        <div className="parent">
+            <Outlet/>
+        </div>
     </>
    )
 }
