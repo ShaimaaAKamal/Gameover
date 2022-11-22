@@ -52,9 +52,9 @@ function App() {
           {index:true,element:<Loading/>},
           {path:':platform' ,element:<All/>,loader: async ({ params }) =>  getData('platform',params.platform)}]},
         {path:'sort-by',element:<Sort/>,children:[
-          {index:true,element:<DisplayedGames/>,loader: async () =>  getData('sort-by','')},
+          {index:true,element:<All/>,loader: async () =>  getData('sort-by','')},
           {path:':sortItem',element:<All/>,loader: async ({ params }) =>  getData('sort-by',params.sortItem)}]},
-        {path:'Categories',element:<Category/>,errorElement:<Loading/>,children:[
+          {path:'Categories',element:<Category/>,errorElement:<Loading/>,children:[
           {index:true,element:<Loading/>},
           {path:':category',element:<All/>,loader: async ({ params }) =>  getData('category',params.category)}
         ]}
