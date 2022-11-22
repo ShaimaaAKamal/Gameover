@@ -1,12 +1,15 @@
 import React,{ useEffect, useRef, useState} from 'react';
 import { useLoaderData,useNavigate } from 'react-router-dom';
 import DisplayedGames from '../DisplayGames/DisplayedGames';
+// import Loading from '../Loading/Loading'
+
 
 
 
   
 export default function All() {
   let index=useRef(24)
+  // let [load,setLoad]=useState(true)
   const [more,setMore]=useState(true)
   const navigate=useNavigate()
   const [games,setGames]=useState([])
@@ -14,6 +17,7 @@ export default function All() {
   useEffect(()=>{
     if(index.current >=data.length) setMore(false)
     setGames(data.slice(0,index.current))
+    // setLoad(false)
   },[])
   useEffect(()=>{
     if(index.current >= data.length) setMore(false)
@@ -34,7 +38,7 @@ export default function All() {
 
   return (
          <>
-            <DisplayedGames games={games} gameDetails={gameDetails} moreGames={moreGames} more={more}/>
-         </>
+         <DisplayedGames games={games} gameDetails={gameDetails} moreGames={moreGames} more={more}/>
+          </>
   )
 }

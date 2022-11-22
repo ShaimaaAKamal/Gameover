@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 export default function GameDetails() {
-
   const {data}=useLoaderData();
   let reqKeys,reqValues
   const [game,setGame]=useState(data);
@@ -16,7 +15,7 @@ export default function GameDetails() {
   };
 
   return (
-    <div className='container py-5 my-5'>
+   ( <div className='container py-5 my-5'>
       <div className="row">
          <div className="col-lg-4">
               <div>
@@ -107,6 +106,6 @@ export default function GameDetails() {
               </div>
          </div>
       </div>
-    </div>
+    </div>)
   )
 }
