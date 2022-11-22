@@ -17,6 +17,9 @@ body{
     .borderTop{
         border-top:.1px solid #4F5458 
     }
+    .vh-75{
+        height: 75vh;
+    }
     .fa-rotate-45{
         transform: rotate(45deg);
     }
@@ -27,9 +30,6 @@ body{
        color:purple;
     }
     
-  .parent{
-    padding-top: 65px;
-  }
     nav{
         background-color: $navColor;
         z-index:100;
@@ -59,66 +59,98 @@ body{
         }
     }
 
-    .homeHeader{
-      background-image: url('../src/images/home.png');  
-      background-position: center center;
-      background-repeat:no-repeat;
+    .parent{
+        padding-top: 65px;
+        .homeHeader{
+            background-image: url('../src/images/home.png');  
+            background-position: center center;
+            background-repeat:no-repeat;
+      
+          }
+          .HomeCard{
+              background-color: $cardColor;
+              transition: transform 1s;
+              &:hover{
+                  transform: scale(1.04);
+              }
+          }
+          .form{
+              background-color: $formbg;
+              color:#A9AAAA;
+              .form-control{
+                  background-color: #1C1E22;
+                  color:#fff;
+                  border:none;
+                  padding:.5rem .9rem;
+              }
+              .login .form-control{
+                  background-color: #fff;
+                  color:$navColor
+              }
+              button{
+                  background-color: #393F43;
+                  color:#fff;
+                  border:.5px solid #1C1E22;
+                  &:hover{
+                      background-color: #393F43;
+                  }
+              }
+          }
+          
+          .category{
+              align-self: center;
+              background-color: $navTextColor;
+              color:$navColor;
+              border-radius: 1rem;
+              padding:0 .7rem;
+              font-weight: 500;
+              font-size: .7rem;
+          }
+      
+          .platformIcon{
+              font-size: 1.4rem;   
+          }
+      
+          .detailsPage{
+              background-color:$formbg ;
+              font-weight: 300;
+              font-size: 1.2rem;
+              padding:.6rem 1.4rem;
+              text-transform: uppercase;
+          }
 
-    }
-    .HomeCard{
-        background-color: $cardColor;
-        transition: transform 1s;
-        &:hover{
-            transform: scale(1.04);
-        }
-    }
+          .anim{
+            animation-name: MoveUp;
+            transition: all 1s;
+            animation-duration: .8s;
+            animation-iteration-count: infinite;
+          }
 
-   
+          .loadFarIcon{
+            @extend .anim
+          }
 
-    .form{
-        background-color: $formbg;
-        color:#A9AAAA;
-        .form-control{
-            background-color: #1C1E22;
-            color:#fff;
-            border:none;
-            padding:.5rem .9rem;
-        }
-        .login .form-control{
-            background-color: #fff;
-            color:$navColor
-        }
-        button{
-            background-color: #393F43;
-            color:#fff;
-            border:.5px solid #1C1E22;
-            &:hover{
-                background-color: #393F43;
-            }
-        }
-    }
-    
-    .category{
-        align-self: center;
-        background-color: $navTextColor;
-        color:$navColor;
-        border-radius: 1rem;
-        padding:0 .7rem;
-        font-weight: 500;
-        font-size: .7rem;
-    }
+          .loadCloseIcon{
+            animation-delay: .2s;
+            @extend .anim
+          }
 
-    .platformIcon{
-        font-size: 1.4rem;   
-    }
+          @keyframes MoveUp {
+            0% {transform: translateY(0);}
+            10% {transform: translateY(-10px)}
+            20% {transform: translateY(-20px)}
+            30% {transform: translateY(-30px)}
+            40% {transform: translateY(-40px)}
+            50% {transform: translateY(-50px)}
+            60% {transform: translateY(-40px)}
+            70% {transform: translateY(-30px)}
+            80% {transform: translateY(-20px)}
+            90% {transform: translateY(-10px)}
+            100% {transform: translateY(0px)}
 
-    .detailsPage{
-        background-color:$formbg ;
-        font-weight: 300;
-        font-size: 1.2rem;
-        padding:.6rem 1.4rem;
-        text-transform: uppercase;
-    }
+          }
+      }
+  
 
 }
 
