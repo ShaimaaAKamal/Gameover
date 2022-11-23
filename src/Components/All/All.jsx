@@ -51,8 +51,7 @@ export default function All() {
 
 
   const getApi=()=>{
-    if(map.size === 0 && location.pathname === '/games/all') return  general.getData('id','all','all');
-    else if(map.size === 0 && location.pathname === '/games/sort-by') return  general.getData('sort-by','');
+    if(map.size === 0) return  general.getData('id','all','all');
     else if(map.has('platform')) return  general.getData('platform',params.platform)
     else if(map.has('sortItem')) return general.getData('sort-by',params.sortItem)
     else if(map.has('category')) return  general.getData('category',params.category)
