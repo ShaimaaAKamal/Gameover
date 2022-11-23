@@ -71,7 +71,7 @@ export default function GameDetails() {
                  {
                   (game.screenshots.length !==0) ? 
                   <>  
-                  <h4 className='py-4'>game name Screenshots</h4>
+                  <h4 className='py-4 text-capitalize'>{game.title} Screenshots</h4>
                   <Carousel activeIndex={index} onSelect={handleSelect} controls={false} indicators={false} interval={3000}>
                      {game.screenshots.map((slide, i) => {
                        return (
