@@ -34,7 +34,7 @@ export default function GameCard({game,gameDetails}) {
                       <i className="fa-solid fa-square-plus"></i>
                       <div className=' small d-flex align-games-center'>
                            <span className='me-2 category'>{game.genre}</span>
-                           <span className='platformIcon'>{(game.platform === 'Web Browser')?<i className="fa-solid fa-window-maximize"></i>:<i className="fa-brands fa-windows"></i>}</span>
+                           <span className='platformIcon'>{(game.platform === 'Web Browser')?<i className="fa-solid fa-window-maximize" ></i>:<i className="fa-brands fa-windows"></i>}</span>
                       </div>
                   </div>
                </div>
