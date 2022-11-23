@@ -52,7 +52,7 @@ const setCredtientails=(e)=>{
 }
 
   return (
-    <div className="container py-5 my-5 ">
+    <div className="container py-5 my-5 px-4 px-md-0">
     <div className="row g-0">
       <div className="col-lg-6 d-none d-lg-block">
        <div className='h-100'>

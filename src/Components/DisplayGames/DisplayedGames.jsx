@@ -6,7 +6,7 @@ import GameCard from '../GameCard/GameCard'
 export default function DisplayedGames({games,gameDetails,moreGames,more}) {
   return (
     <div>
-       <div className='container py-5 mt-5'>
+       <div className='container py-5 mt-5 px-4 px-md-0'>
        <div className="row gy-4">
           {
             games.map((game,index)=>  <div className="col-md-6 col-lg-4 col-xl-3" key={index} >

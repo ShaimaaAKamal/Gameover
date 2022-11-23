@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar';
 
 
 export default function Layout({token,setToken}) {
+   
   return (
     <> 
         <Navbar token={token}  setToken={setToken}/>

@@ -16,22 +16,24 @@ export default function Home() {
         setPopular(data.slice(0,3));
       }
        }
+       const collapseMenu=document.querySelector('.navbar-collapse');
+       collapseMenu.classList.remove('show');
        fetchData()
   },[])
   const gameDetails=(gameId)=>{
     navigate(`/gameDetails/${gameId}`)
   }
   return (
-    <div className='container'>
+    <div className='container '>
       {(load)?<Loading/>:<>
       <div className='homeHeader text-center py-5'>
            <h1 className='pt-5' >Find & track the best <span className='text-info'>free-to-play </span>games!</h1>
            <p className='text-muted'>Track what you've played and search for what to play next! Plus get free premium loot!</p>
            <Link className='btn btn-outline-secondary mb-4' to='/games/all'>Browse Games</Link>
         </div>
-        <div className='my-5'>
-          <h2 className='py-3'><i className="fa-solid fa-robot"></i><span>Personalized Recommendations</span></h2>
-          <div className="row gy-3">
+        <div className='mb-5 ps-4 ps-md-0'>
+          <h3 className='py-3'><i className="fa-solid fa-robot"></i><span>Personalized Recommendations</span></h3>
+          <div className="row gy-4 pe-4 pe-md-0">
            {
             popular.map((game,index)=>  <div className="col-md-4" key={index} >
               <PopularCard game={game} gameDetails={gameDetails}/>
