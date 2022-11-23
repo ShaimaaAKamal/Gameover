@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import axios from "axios";
 import Layout from '../Layout/Layout';
+import Redirect from "../Redirect/Redirect";
 import NotFound from '../NotFound/NotFound';
 import Login from '../Login/Login'
 import Register from '../Register/Register'
@@ -37,16 +38,20 @@ function App() {
       {path:'login',element:<GuestRoute><Login getUserData={getUserData}/></GuestRoute>},
       {path:'register',element:<GuestRoute><Register/></GuestRoute>},
       {path:'games',element:<ProtectedRoute><Games/></ProtectedRoute>,children:[
-        {index:true,element:<Loading/>},
+        {index:true,element:<Redirect redir='/games/all'/>},
+        // {index:true,element:<Loading/>},
         {path:'all',element:<All/>},
         {path:'Platforms',element:<PlatForm/>,errorElement:<Loading/>,children:[
-          {index:true,element:<Loading/>},
+          {index:true,element:<Redirect redir='/games/Platforms/pc'/>},
+          // {index:true,element:<Loading/>},
           {path:':platform' ,element:<All/>}]},
         {path:'sort-by',element:<Sort/>,children:[
-          {index:true,element:<All/>},
+          {index:true,element:<Redirect redir='/games/sort-by/alphabetical'/>},
+          // {index:true,element:<All/>},
           {path:':sortItem',element:<All/>}]},
           {path:'Categories',element:<Category/>,errorElement:<Loading/>,children:[
-          {index:true,element:<Loading/>},
+            {index:true,element:<Redirect redir='/games/Categories/racing'/>},
+          // {index:true,element:<Loading/>},
           {path:':category',element:<All/>}
         ]}
       ]}
