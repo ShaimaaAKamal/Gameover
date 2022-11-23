@@ -32,6 +32,8 @@ export default function All() {
        drops.forEach(drop=>
         drop.classList.remove('show')
        )
+       const collapseMenu=document.querySelector('.navbar-collapse');
+       collapseMenu.classList.remove('show');
   },[])
   useEffect(()=>{
     fetchData()

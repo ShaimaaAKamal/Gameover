@@ -29,12 +29,14 @@ export default function GameDetails() {
       }
      }
       }
+      const collapseMenu=document.querySelector('.navbar-collapse');
+      collapseMenu.classList.remove('show');
       fetchData()
  },[])
   return (
-   ( <div className='container py-5 my-5'>
+   ( <div className='container py-5 my-5 px-4 px-md-0'>
        {
-        (load)?<Loading/>:<div className="row">
+        (load)?<Loading/>:<div className="row gy-4">
         <div className="col-lg-4">
              <div>
                 <img src={game.thumbnail} alt={game.title} className='w-100 rounded' />
