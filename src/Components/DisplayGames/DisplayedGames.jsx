@@ -9,7 +9,7 @@ export default function DisplayedGames({games,gameDetails,moreGames,more}) {
        <div className='container py-5 mt-5'>
        <div className="row gy-4">
           {
-            games.map((game,index)=>  <div className="col-md-6 col-lg-3" key={index} >
+            games.map((game,index)=>  <div className="col-md-6 col-lg-4 col-xl-3" key={index} >
                                           <GameCard game={game} gameDetails={gameDetails}/>
                                       </div>)
            }
