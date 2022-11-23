@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import auth from '../../images/auth.jpg';
 import logo from '../../images/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,6 +19,7 @@ export default function Login({getUserData}) {
 
   const [validationErrorsList,setValidationErrorsList]=useState([]);
   const [apiError,setApiError]=useState('');
+
 
  const handleLoginSubmit=async (e)=>{
     setValidationErrorsList([]);
@@ -43,13 +44,17 @@ export default function Login({getUserData}) {
 
  }
 
-
-
 const setCredtientails=(e)=>{
    const myCredtientials=credtientials;
    myCredtientials[e.target.name]=e.target.value;
    setCredientals(myCredtientials)
 }
+
+useEffect(()=>{
+      const collapseMenu=document.querySelector('.navbar-collapse');
+      collapseMenu.classList.remove('show');
+ },[]
+)
 
   return (
     <div className="container py-5 my-5 px-4 px-md-0">

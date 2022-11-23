@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 import axios from 'axios'
 import auth from '../../images/auth.jpg'
 import { Link, useNavigate } from 'react-router-dom'
@@ -42,6 +42,12 @@ export default function Register() {
           }
      }
   }
+
+  useEffect(()=>{
+    const collapseMenu=document.querySelector('.navbar-collapse');
+    collapseMenu.classList.remove('show');
+},[]
+)
   
   return (
     <div className="container py-5 my-5 px-4 px-md-0">
