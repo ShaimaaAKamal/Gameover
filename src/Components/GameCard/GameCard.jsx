@@ -1,13 +1,30 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 export default function GameCard({game,gameDetails}) {
+  let [width,setWidth]=useState(window.innerWidth);
+  const getTitle=(wid)=>{
+    return ((game['title']).length >(Math.round(wid)))?
+    `${game['title'].split('').slice(0,(Math.round(wid))).join('')}...`:
+    game['title'];
+  }
+  let displayTitle=(width)=>{
+    
+    if(width<768)      return game['title']
+    else if(width>768 && width <992) return getTitle(width/2)
+    else if( width > 992 && width <1200) return getTitle(16)
+    else if (width >1200) return getTitle(13) 
+   
+  }
+
+    window.addEventListener('resize',()=>{
+      setWidth(window.innerWidth);
+    })
+ 
   return (
-            <div className='HomeCard rounded-2' onClick={()=>gameDetails(game.id)}>
+            <div className='HomeCard rounded-2' onClick={()=>gameDetails(game.id)} title={(game.platform === 'Web Browser')?'Available on Browser':'Available on Windows'}>
                <img src={game.thumbnail} alt={game.title} className='w-100' />
                <div className='p-3 pb-2'>
                   <div className='d-flex align-games-center justify-content-between'>
-                    <h5 className='text-capitalize'>{((game['title']).length >12)?
-                    `${game['title'].split('').slice(0,12).join('')}....`:game['title']}</h5>
+                    <h5 className='text-capitalize cardTitle'>{displayTitle(width)}</h5>
                     <h5><span className="badge bg-info">Free</span></h5>
                   </div>
                   <p className='text-muted small my-0'>
